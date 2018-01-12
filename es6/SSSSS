@@ -1,0 +1,2 @@
+<span onClick={()=>{this.props.history.goBack()}}>返回来的地方</span><br/>
+<span onClick={()=>{this.props.history.push('/')}}>返回首页</span>

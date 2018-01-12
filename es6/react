@@ -1,0 +1,39 @@
+## 1
+handleClick=()=>{
+  // this.props.click()
+  // console.log(document.getElementsByClassName('btn')[0]);
+  //源生获取dom节点
+  //react获取真实dom
+  //标签有个ref={xx=>this.btn=xx}
+  //ref 函数内部的参数btn代表的就是真实dom
+  // this.xx=btn 将真实dom赋值给组件的xx属性
+
+
+}
+render () {
+  return(
+    <button onClick={this.props.click} className='btn'>open</button>
+    <Button ref={btn=>{this.state.show}} click={this.handleOpen}/>
+  )
+}
+
+## 2
+handleClick = () => {
+  console.log(this.button)
+  this.button.handleClick()
+  //this.button 获取Button组件
+  //利用ref在父组件中得到子组件
+  //父组件可以直接调用子组件的方法
+  //父组件就可以改变子组件的状态了
+}
+
+  render () {
+    console.log(this.state.show);
+    return(
+      <div>
+        <button onClick={this.handleClick}>按钮</button>
+        <Button ref={btn=>{this.state.show}}  click={this.handleOpen}/>
+        <Sidebar show={this.state.show}/>
+      </div>
+    )
+  }

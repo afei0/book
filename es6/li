@@ -1,0 +1,145 @@
+import React from 'react'
+// import Button from './component/button/Button'
+function Button(props){
+  console.log(props);
+  return <input type='text' placeholder={props.name} className='ctn'/>
+
+}
+
+class App extends React.Component{
+    render(){
+      let a ='hahaha'
+      return (
+        <div>
+        <Button name={a}/>
+        </div>
+      )
+    }
+}
+
+//单页面应用
+//所有的css都是全局的 尽量所有命名不重复
+//react组件内部有一个默认的参数叫props作用是接收父组件传过来的参数
+//如果是函数组件的话 函数的第一个参数默认就是props
+//如果是es6 class组件的话 组件内部使用this.props获取props
+//props对象是只读的(不能修改)
+//当父组件传给子组件一个react节点的时候子组件使用this.props.children 接收
+<button>
+<span>1</span>
+</button>
+export default App
+
+## index.js
+import React from 'react'
+import ReactDom from 'react-dom'
+import App from './app.js'
+ReactDom.render(<App/>,document.getElementById('root'))
+## app.js
+import React from 'react'
+import Button from './component/button/Button'
+
+class App extends React.Component{
+    render(){
+      return (
+        <div>
+        <Button/>
+        <Button/>
+        </div>
+      )
+
+
+    }
+}
+//单页面应用
+//所有的css都是全局的 尽量所有命名不重复
+//react组件内部有一个默认的参数叫props作用是接收父组件传过来的参数
+//如果是函数组件的话 函数的第一个参数默认就是props
+//如果是es6 class组件的话 组件内部使用this.props获取
+export default App
+
+## button
+import React from 'react'
+import '../Button.css'
+class Button extends React.Component{
+    render(){
+      return (
+        <input type='text' placeholder='用户名' className='ctn'/>
+      )
+    }
+}
+
+export default Button
+
+
+##事件处理
+handleClick = ()=>{
+  console.log(this)
+}
+  render(){
+    return (<div>
+<button onClick={ this.handleClick }>按钮</button>
+    </div>
+  )
+  }
+}
+
+
+handleClick = (test)=>{
+  console.log(test)
+}
+  render(){
+    let a = 10
+    return (<div>
+    //<button onClick={ ()=>{this.handleClick(a)} }>按钮</button>
+      //箭头函数事件传参
+    // <button onClick={ this.handleClick(a).bind(this.a) }>按钮</button>
+      //非箭头函数事件传参
+    </div>
+  )
+  }
+}
+
+//给react 组件绑定事件 必须使用行内事件方式绑定 事件名称 驼峰方式
+//有个问题就是当在行内绑定事件的时候事件函数内部的this就会指向window所以在组件内部 声明事件函数的时候通常使用箭头函数
+//也可以使用constructor方法在其内部改变事件函数this指向
+//react的事件函数的最后一个参数默认是：事件对象
+//组件 1.props 2. state 3.生命周期函数
+
+//组件文件夹 首字母大写 多个单词使用驼峰命名
+//文件夹下的js首字母大写。。。  css全部小写，多个单词的话最好使用 - 连接
+//组件中默认有一个props属性这个属性值是一个对象
+//该对象内部存储的是父组件 传过来的值
+//在子组件内部获取props使用  this.props
+// props对象是只读的 不可更改
+// jsx内部嵌套js（必须是一个值）
+// props对象下默认有一个children属性
+// 函数名.bind(对象)
+// 返回一个新的函数，和原函数内部功能一样 但是函数内部this已经指向bind方法的第一个参数
+//state 状态，组件的state 改变，组件就会重新渲染  页面也就改变了
+//react 组件默认有一个state属性，这个属性是一个对象，该对象内部设置属性
+constructor(){
+  super()
+  this.state={
+    //设置状态
+    num : 1
+  }
+}
+使用this.state.num获取num状态值
+使用setState方法修改state值
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0
